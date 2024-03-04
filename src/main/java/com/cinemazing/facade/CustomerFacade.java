@@ -5,6 +5,7 @@ import com.cinemazing.beans.Coupon;
 import com.cinemazing.beans.Customer;
 import com.cinemazing.exceptions.CouponSystemException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class CustomerFacade extends ClientFacade {
@@ -31,51 +32,57 @@ public class CustomerFacade extends ClientFacade {
         }
 
         if (couponsDAO.isCouponExistsByCustomerID(customerID, couponID)) {
-            throw new CouponSystemException("Coupon has already been purchased by this customer");
-        }
-        //TODO - DO IT ON couponFromDB
-        if (couponsDAO.isCouponExpired(couponID)) {
-            throw new CouponSystemException("Coupon has expired");
-        }
-        //TODO - DO IT ON couponFromDB
-        if ((couponsDAO.getOneCoupon(couponID).getAmount() == 0)) {
-            throw new CouponSystemException("Coupon is out of stock");
+            throw new CouponSystemException("This coupon has already been purchased by this customer");
         }
 
         Coupon couponFromDB = couponsDAO.getOneCoupon(couponID);
-        couponFromDB.setAmount(couponFromDB.getAmount() - 1);
-        couponsDAO.updateCoupon(couponFromDB);
-        couponsDAO.addCouponPurchase(customerID, couponID);
-    }
-
-
-    public List<Coupon> getCustomerCoupons(int customerID) throws CouponSystemException {
-        if (!customersDAO.isCustomerExistsById(customerID)) {
-            throw new CouponSystemException("Customer does not exist");
+//      if ((couponsDAO.getOneCoupon(couponID).getAmount() == 0)) {
+//            throw new CouponSystemException("Coupon is out of stock");
+//        }
+        if (couponFromDB.getAmount() == 0) {
+            throw new CouponSystemException("Coupon is out of stock");
         }
-        return couponsDAO.getCustomerCoupons(customerID);
-    }
-
-
-    public List<Coupon> getCustomerCoupons(int customerID, Category category) throws CouponSystemException {
-        if (!customersDAO.isCustomerExistsById(customerID)) {
-            throw new CouponSystemException("Customer does not exist");
+//      if (couponsDAO.isCouponExpired(couponID)) {
+//            throw new CouponSystemException("Coupon has expired");
+//        }
+        if (LocalDate.now().isAfter(couponFromDB.getEndDate())) {
+            throw new CouponSystemException("Coupon has expired");
         }
-        return couponsDAO.getCustomerCouponsByCategory(customerID, category.getId());
-    }
-
-
-    public List<Coupon> getCustomerCoupons(int customerID, double maxPrice) throws CouponSystemException {
-        if (!customersDAO.isCustomerExistsById(customerID)) {
-            throw new CouponSystemException("Customer does not exist");
+            couponFromDB.setAmount(couponFromDB.getAmount() - 1);
+            couponsDAO.updateCoupon(couponFromDB);
+            couponsDAO.addCouponPurchase(customerID, couponID);
         }
-        return couponsDAO.getCustomerCouponsByMaxPrice(customerID, maxPrice);
+
+
+
+        public List<Coupon> getCustomerCoupons ( int customerID) throws CouponSystemException {
+            if (!customersDAO.isCustomerExistsById(customerID)) {
+                throw new CouponSystemException("Customer does not exist");
+            }
+            return couponsDAO.getCustomerCoupons(customerID);
+        }
+
+
+        public List<Coupon> getCustomerCoupons ( int customerID, Category category) throws CouponSystemException {
+            if (!customersDAO.isCustomerExistsById(customerID)) {
+                throw new CouponSystemException("Customer does not exist");
+            }
+            return couponsDAO.getCustomerCouponsByCategory(customerID, category.getId());
+        }
+
+
+        public List<Coupon> getCustomerCoupons ( int customerID, double maxPrice) throws CouponSystemException {
+            if (!customersDAO.isCustomerExistsById(customerID)) {
+                throw new CouponSystemException("Customer does not exist");
+            }
+            return couponsDAO.getCustomerCouponsByMaxPrice(customerID, maxPrice);
+        }
+
+
+        public Customer getCustomerDetails ( int customerID){
+            return customersDAO.getOneCustomer(customerID);
+        }
     }
 
 
-    public Customer getCustomerDetails(int customerID) {
-        return customersDAO.getOneCustomer(customerID);
-    }
 
-
-}
