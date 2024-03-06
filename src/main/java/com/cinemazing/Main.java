@@ -5,11 +5,9 @@ import com.cinemazing.tests.AllTest;
 public class Main {
 
     public static void main(String[] args) {
-      AllTest.runAllAdminTest();
+      AllTest.runAllTests();
 
     }
 
-        public static void testAll(){
-    }
 
 }

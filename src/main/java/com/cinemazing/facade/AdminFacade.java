@@ -91,7 +91,10 @@ public class AdminFacade extends ClientFacade {
     customersDAO.updateCustomer(customer);
   }
 
-  public void deleteCustomer(int customerID) {
+  public void deleteCustomer(int customerID) throws CouponSystemException {
+    if (!customersDAO.isCustomerExistsById(customerID)) {
+      throw new CouponSystemException("Customer does not exist");
+    }
     couponsDAO.deleteCouponPurchaseByCustomerId(customerID);
     customersDAO.deleteCustomer(customerID);
   }

@@ -13,10 +13,12 @@ public class AllTest {
         return instance;
     }
 
-    public static void runAllAdminTest() {
+    public static void runAllTests() {
         DBManager.createDataBase();
         CouponExcperationJob couponExcperationJob = new CouponExcperationJob();
         couponExcperationJob.start();
         AdminTest.runAllAdminTest();
+        System.out.println();
+        CompanyTest.runAllCompanyTest();
     }
 }
