@@ -24,6 +24,9 @@ public class CompanyFacade extends ClientFacade {
     if (couponsDAO.isCouponExistsByTitleAndCompanyId(coupon.getTitle(), companyID)) {
       throw new CouponSystemException("Coupon title already exists");
     }
+    if (!companiesDAO.isCompanyExistsById(companyID)) {
+      throw new CouponSystemException("Company does not exist");
+    }
     coupon.setCompanyID(companyID);
     couponsDAO.addCoupon(coupon);
   }
@@ -51,6 +54,9 @@ public class CompanyFacade extends ClientFacade {
   }
 
   public void deleteCoupon(int companyID, int couponID) throws CouponSystemException {
+    if (!couponsDAO.isCouponExists(couponID)) {
+      throw new CouponSystemException("Coupon does not exist");
+    }
     if (!companiesDAO.isCompanyExistsById(companyID)) {
       throw new CouponSystemException("Company does not exist");
     }
@@ -83,7 +89,12 @@ public class CompanyFacade extends ClientFacade {
     return couponsDAO.getCompanyCouponsByMaxPrice(companyID, maxPrice);
   }
 
-  public Company getCompanyDetails(int companyID) {
-    return companiesDAO.getOneCompany(companyID);
+  public Company getCompanyDetails(int companyID) throws CouponSystemException {
+    if (!companiesDAO.isCompanyExistsById(companyID)) {
+      throw new CouponSystemException("Company does not exist");
+    }
+    Company company = companiesDAO.getOneCompany(companyID);
+    company.setCoupons(getCompanyCoupons(companyID));
+    return company;
   }
 }
