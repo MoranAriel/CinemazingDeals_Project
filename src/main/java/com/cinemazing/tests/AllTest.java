@@ -20,5 +20,7 @@ public class AllTest {
         AdminTest.runAllAdminTest();
         System.out.println();
         CompanyTest.runAllCompanyTest();
+        System.out.println();
+        CustomerTest.runAllCustomerTest();
     }
 }

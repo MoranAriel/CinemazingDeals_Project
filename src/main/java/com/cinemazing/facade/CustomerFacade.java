@@ -79,7 +79,10 @@ public class CustomerFacade extends ClientFacade {
         }
 
 
-        public Customer getCustomerDetails ( int customerID){
+        public Customer getCustomerDetails ( int customerID) throws CouponSystemException {
+            if (!customersDAO.isCustomerExistsById(customerID)) {
+                throw new CouponSystemException("Customer does not exist");
+            }
             return customersDAO.getOneCustomer(customerID);
         }
     }

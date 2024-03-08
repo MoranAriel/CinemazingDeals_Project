@@ -67,9 +67,9 @@ public class CompanyTest {
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
     Coupon couponToAdd2 = new Coupon(0, Category.STREAMING, "Free Month","get first month free",
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
-    Coupon couponToAdd3 = new Coupon(0, Category.POST_PRODUCTION, "can't think of a name","can't think of a description",
+    Coupon couponToAdd3 = new Coupon(0, Category.POST_PRODUCTION, "cant think of a name","cant think of a description",
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
-    Coupon couponToAdd4 = new Coupon(0, Category.PRODUCTION, "still can't think of a name","still can't think of a description",
+    Coupon couponToAdd4 = new Coupon(0, Category.PRODUCTION, "still cant think of a name","still cant think of a description",
             LocalDate.now(),LocalDate.of(2024,12,12),10,40.0,"imagelink");
 
     try {
