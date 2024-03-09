@@ -378,7 +378,7 @@ public class CouponsDBDAO implements CouponsDAO {
     try {
       connection = connectionPool.getConnection();
 
-      String query = "SELECT EXISTS (SELECT * FROM" + DBManager.DB + ".`customers_vs_coupons`" + "WHERE CUSTOMER_ID = ? AND COUPON_ID ) AS res;";
+      String query = "SELECT EXISTS (SELECT * FROM" + DBManager.DB + ".`customers_vs_coupons`" + "WHERE CUSTOMER_ID = ? AND COUPON_ID = ? ) AS res;";
 
       PreparedStatement preparedStatement = connection.prepareStatement(query);
 
@@ -502,9 +502,7 @@ public class CouponsDBDAO implements CouponsDAO {
     List<Coupon> result = new ArrayList<>();
     try {
       connection = connectionPool.getConnection();
-      String query = "SELECT `coupon`.* FROM " + DBManager.DB + ".`coupons`" +
-              " INNER JOIN `customers_vs_coupons` ON customers_vs_coupons.COUPON_ID=coupons.ID"
-              + "WHERE customers_vs_coupons.CUSTOMER_ID = ?";
+      String query = "SELECT * FROM" + DBManager.DB + ".coupons inner JOIN" + DBManager.DB + ".customers_vs_coupons ON customers_vs_coupons.COUPON_ID = coupons.ID WHERE (`CUSTOMER_ID` = ?)";
 
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, customerID);
@@ -540,9 +538,7 @@ public class CouponsDBDAO implements CouponsDAO {
     List<Coupon> result = new ArrayList<>();
     try {
       connection = connectionPool.getConnection();
-      String query = "SELECT `coupon`.* FROM " + DBManager.DB + ".`coupons`" +
-              " INNER JOIN `customers_vs_coupons` ON customers_vs_coupons.COUPON_ID=coupons.ID"
-              + "WHERE customers_vs_coupons.CUSTOMER_ID = ? AND coupons.CATEGORY_ID = ?";
+      String query ="SELECT * FROM" + DBManager.DB + ".coupons inner JOIN" + DBManager.DB + ".customers_vs_coupons ON customers_vs_coupons.COUPON_ID = coupons.ID WHERE (`CUSTOMER_ID` = ? AND CATEGORY_ID = ?)";
 
       PreparedStatement preparedStatement = connection.prepareStatement(query);
       preparedStatement.setInt(1, customerID);
@@ -579,9 +575,7 @@ public class CouponsDBDAO implements CouponsDAO {
       List<Coupon> result = new ArrayList<>();
       try {
         connection = connectionPool.getConnection();
-        String query = "SELECT `coupon`.* FROM " + DBManager.DB + ".`coupons`" +
-                " INNER JOIN `customers_vs_coupons` ON customers_vs_coupons.COUPON_ID=coupons.ID"
-                + "WHERE customers_vs_coupons.CUSTOMER_ID = ? AND coupons.PRICE <= ?";
+        String query = "SELECT * FROM" + DBManager.DB + ".coupons inner JOIN" + DBManager.DB + ".customers_vs_coupons ON customers_vs_coupons.COUPON_ID = coupons.ID WHERE (`CUSTOMER_ID` = ? AND PRICE <= ?)";
 
         PreparedStatement preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1, customerID);

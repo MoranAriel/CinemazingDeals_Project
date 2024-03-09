@@ -53,7 +53,7 @@ public class AdminTest {
       adminFacade = (AdminFacade) loginManager.login("admin@admin.com", "admin", ClientType.ADMINISTRATOR);
       System.out.println("Login Successful. Welcome Admin!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -61,7 +61,7 @@ public class AdminTest {
       adminFacade = (AdminFacade) loginManager.login("dmin@admin.com", "admin", ClientType.ADMINISTRATOR);
       System.out.println("Login Successful. Welcome Admin!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -69,7 +69,7 @@ public class AdminTest {
       adminFacade = (AdminFacade) loginManager.login("admin@admin.com", "admin1234", ClientType.ADMINISTRATOR);
       System.out.println("Login Successful. Welcome Admin!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -89,7 +89,7 @@ public class AdminTest {
       adminFacade.addCompany(companyToAdd3);
       System.out.println("Company Added Successfully: " + companyToAdd3);//If company added successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -97,7 +97,7 @@ public class AdminTest {
       adminFacade.addCompany(companyToAdd);
       System.out.println("Company Added Successfully: " + companyToAdd);//If company added successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -106,7 +106,7 @@ public class AdminTest {
       adminFacade.addCompany(companyToAdd);
       System.out.println("Company Added Successfully: " + companyToAdd);//If company added successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -119,7 +119,7 @@ public class AdminTest {
       adminFacade.updateCompany(companyToUpdate);
       System.out.println("Company Updated Successfully: " + companyToUpdate);//If company updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -127,7 +127,7 @@ public class AdminTest {
       adminFacade.updateCompany(companyToUpdate2);
       System.out.println("Company Updated Successfully: " + companyToUpdate2);//If company updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -136,7 +136,7 @@ public class AdminTest {
       adminFacade.updateCompany(companyToUpdate);
       System.out.println("Company Updated Successfully: " + companyToUpdate);//If company updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -146,7 +146,7 @@ public class AdminTest {
         adminFacade.deleteCompany(2);
         System.out.println("Company Deleted Successfully");//If company deleted successfully, you will see this message.
       } catch (CouponSystemException e) {
-        System.err.println(e.getMessage());
+        System.out.println(e.getMessage());
       }
 
     try {
@@ -154,7 +154,7 @@ public class AdminTest {
       adminFacade.deleteCompany(7);
       System.out.println("Company Deleted Successfully");//If company deleted successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -169,7 +169,7 @@ public class AdminTest {
       Company company = adminFacade.getOneCompany(1);
       System.out.println("Here is your Company: " + company);//If company got successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try{
@@ -177,7 +177,7 @@ public class AdminTest {
       Company company2 = adminFacade.getOneCompany(8);
       System.out.println("Here is your Company: " + company2);//If company got successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -197,7 +197,7 @@ public class AdminTest {
       adminFacade.addCustomer(customerToAdd3);
       System.out.println("Customer Added Successfully: " + customerToAdd3);//If customer added successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -205,7 +205,7 @@ public class AdminTest {
       adminFacade.addCustomer(customerToAdd);
       System.out.println("Customer Added Successfully: " + customerToAdd);//If customer added successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -219,7 +219,7 @@ public class AdminTest {
       adminFacade.updateCustomer(customerToUpdate);
       System.out.println("Customer Updated Successfully: " + customerToUpdate);//If customer updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -227,7 +227,7 @@ public class AdminTest {
       adminFacade.updateCustomer(customerToUpdate2);
       System.out.println("Company Updated Successfully: " + customerToUpdate2);//If customer updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -235,7 +235,7 @@ public class AdminTest {
       adminFacade.updateCustomer(customerToUpdate3);
       System.out.println("Company Updated Successfully: " + customerToUpdate3);//If customer updated successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -245,7 +245,7 @@ public class AdminTest {
       adminFacade.deleteCustomer(2);
       System.out.println("Customer Deleted Successfully");//If customer deleted successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -253,7 +253,7 @@ public class AdminTest {
       adminFacade.deleteCustomer(7);
       System.out.println("Customer Deleted Successfully");//If customer deleted successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -268,7 +268,7 @@ public class AdminTest {
       Customer customer = adminFacade.getOneCustomer(1);
       System.out.println("Here is your Customer: " + customer);//If customer got successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try{
@@ -276,7 +276,7 @@ public class AdminTest {
       Customer customer2 = adminFacade.getOneCustomer(8);
       System.out.println("Here is your Customer: " + customer2);//If customer got successfully, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 

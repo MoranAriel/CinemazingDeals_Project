@@ -36,15 +36,11 @@ public class CustomerFacade extends ClientFacade {
         }
 
         Coupon couponFromDB = couponsDAO.getOneCoupon(couponID);
-//      if ((couponsDAO.getOneCoupon(couponID).getAmount() == 0)) {
-//            throw new CouponSystemException("Coupon is out of stock");
-//        }
+
         if (couponFromDB.getAmount() == 0) {
             throw new CouponSystemException("Coupon is out of stock");
         }
-//      if (couponsDAO.isCouponExpired(couponID)) {
-//            throw new CouponSystemException("Coupon has expired");
-//        }
+
         if (LocalDate.now().isAfter(couponFromDB.getEndDate())) {
             throw new CouponSystemException("Coupon has expired");
         }

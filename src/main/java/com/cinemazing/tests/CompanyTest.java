@@ -49,15 +49,15 @@ public class CompanyTest {
       companyFacade = (CompanyFacade) loginManager.login(companyForLogin.getEmail(), companyForLogin.getPassword(), ClientType.COMPANY);
       System.out.println("Login Successful. Welcome Company "+companyForLogin.getId()+"!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
-      System.out.println("Company login test (fail error with email or password):");
+      System.out.println("Company login test (fail outor with email or password):");
       companyFacade = (CompanyFacade) loginManager.login(companyForLogin2.getEmail(), companyForLogin2.getPassword(), ClientType.COMPANY);
       System.out.println("Login Successful. Welcome Company "+companyForLogin2.getId()+"!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
   }
@@ -83,7 +83,7 @@ public class CompanyTest {
       companyFacade.addCoupon(3,couponToAdd4);
       System.out.println("Coupon added successfully: " + couponToAdd4);//If coupon added successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -91,7 +91,7 @@ public class CompanyTest {
       companyFacade.addCoupon(1,couponToAdd);
       System.out.println("Coupon added successfully: " + couponToAdd);//If coupon added successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -99,7 +99,7 @@ public class CompanyTest {
       companyFacade.addCoupon(8,couponToAdd);
       System.out.println("Coupon added successfully: " + couponToAdd);//If coupon added successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -115,7 +115,7 @@ public class CompanyTest {
       companyFacade.updateCoupon(1,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -124,7 +124,7 @@ public class CompanyTest {
       companyFacade.updateCoupon(1,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -133,7 +133,7 @@ public class CompanyTest {
       companyFacade.updateCoupon(8,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -141,7 +141,7 @@ public class CompanyTest {
       companyFacade.updateCoupon(3,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -150,7 +150,7 @@ public class CompanyTest {
       companyFacade.updateCoupon(1,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -161,7 +161,7 @@ public class CompanyTest {
       companyFacade.deleteCoupon(1,1);
       System.out.println("Coupon "+1+" Deleted Successfully.");//If coupon deleted successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -169,7 +169,7 @@ public class CompanyTest {
       companyFacade.deleteCoupon(1,6);
       System.out.println("Coupon "+6+" Deleted Successfully.");//If coupon deleted successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -177,7 +177,7 @@ public class CompanyTest {
       companyFacade.deleteCoupon(77,3);
       System.out.println("Coupon "+6+" Deleted Successfully.");//If coupon deleted successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -185,7 +185,7 @@ public class CompanyTest {
       companyFacade.deleteCoupon(3,3);
       System.out.println("Coupon "+6+" Deleted Successfully.");//If coupon deleted successfully, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 
@@ -196,7 +196,7 @@ public class CompanyTest {
       List<Coupon> companyCoupons = companyFacade.getCompanyCoupons(3);
       System.out.println("Company Coupons: " + companyCoupons);//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -204,7 +204,7 @@ public class CompanyTest {
       List<Coupon> companyCoupons = companyFacade.getCompanyCoupons(3, Category.PRODUCTION);
       System.out.println("Company Coupons by Category: " + companyCoupons);//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -212,7 +212,7 @@ public class CompanyTest {
       List<Coupon> companyCoupons = companyFacade.getCompanyCoupons(3, 35);
       System.out.println("Company Coupons by Max Price: " + companyCoupons);//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
@@ -220,7 +220,7 @@ public class CompanyTest {
       List<Coupon> companyCoupons = companyFacade.getCompanyCoupons(4);
       System.out.println("Company Coupons: " + companyCoupons);//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
   }
@@ -230,14 +230,14 @@ public class CompanyTest {
       System.out.println("Get Company Details test (success)");
       System.out.println(companyFacade.getCompanyDetails(3));//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
 
     try {
       System.out.println("Get Company Details test (fail, company doesn't exist)");
       System.out.println(companyFacade.getCompanyDetails(2));//If successful, you'll see this message.
     } catch (CouponSystemException e) {
-      System.err.println(e.getMessage());
+      System.out.println(e.getMessage());
     }
   }
 

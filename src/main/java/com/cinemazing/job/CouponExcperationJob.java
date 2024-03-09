@@ -11,7 +11,7 @@ public class CouponExcperationJob extends Thread {
 
   public CouponExcperationJob() {
     this.couponsDAO = new CouponsDBDAO();
-    // this.setDaemon(true);
+    this.setDaemon(true);
   }
 
   @Override
