@@ -3,6 +3,8 @@ package com.cinemazing.tests;
 import com.cinemazing.beans.Category;
 import com.cinemazing.beans.Coupon;
 import com.cinemazing.beans.Customer;
+import com.cinemazing.dao.CouponsDAO;
+import com.cinemazing.dao.CouponsDBDAO;
 import com.cinemazing.exceptions.CouponSystemException;
 import com.cinemazing.facade.CompanyFacade;
 import com.cinemazing.facade.CustomerFacade;
@@ -64,8 +66,60 @@ public class CustomerTest {
     public static void purchaseCouponTest() {
 
         try {
+            System.out.println("Purchase Coupon Test (success)");
             customerFacade.PurchaseCoupon(1,4);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
             customerFacade.PurchaseCoupon(1,3);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("Purchase Coupon Test (fail, customer does not exist)");
+            customerFacade.PurchaseCoupon(8,4);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(8));//If coupon purchased successfully, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("Purchase Coupon Test (fail, coupon does not exist)");
+            customerFacade.PurchaseCoupon(1,8);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            System.out.println("Purchase Coupon Test (fail, coupon already purchased)");
+            customerFacade.PurchaseCoupon(1,3);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            CouponsDAO couponsDAO = new CouponsDBDAO();
+            Coupon couponToUpdate = couponsDAO.getOneCoupon(2);
+            couponToUpdate.setAmount(0);
+            couponsDAO.updateCoupon(couponToUpdate);
+            System.out.println("Purchase Coupon Test (fail, coupon out of stock)");
+            customerFacade.PurchaseCoupon(1,2);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            CouponsDAO couponsDAO = new CouponsDBDAO();
+            Coupon couponToUpdate = couponsDAO.getOneCoupon(2);
+            couponToUpdate.setAmount(10);
+            couponToUpdate.setEndDate(LocalDate.of(2023,1,1));
+            couponsDAO.updateCoupon(couponToUpdate);
+            System.out.println("Purchase Coupon Test (fail, coupon has expired)");
+            customerFacade.PurchaseCoupon(1,2);
+            System.out.println("Coupon Purchased Successfully: " + customerFacade.getCustomerCoupons(1));//If coupon purchased successfully, you'll see this message.
         } catch (CouponSystemException e) {
             System.out.println(e.getMessage());
         }
@@ -93,16 +147,31 @@ public class CustomerTest {
         } catch (CouponSystemException e) {
             System.out.println(e.getMessage());
         }
+
+        try {
+            System.out.println("Get All Purchased Coupon (fail, customer doesn't exist)");
+            System.out.println(customerFacade.getCustomerCoupons(6, 30));
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void getCustomerDetails() {
-        System.out.println("Customer Details:");
+
         try {
-            System.out.println(customerFacade.getCustomerDetails(1));
+            System.out.println("Get Customer Details test (success)");
+            System.out.println(customerFacade.getCustomerDetails(1));//If successful, you'll see this message.
         } catch (CouponSystemException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
-        ;
+
+        try {
+            System.out.println("Get Customer Details test (fail, customer doesn't exist)");
+            System.out.println(customerFacade.getCustomerDetails(6));//If successful, you'll see this message.
+        } catch (CouponSystemException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
 }

@@ -26,7 +26,7 @@ public class ConnectionPool {
         }
     }
 
-    private void closeAllConnections() throws InterruptedException {
+    public void closeAllConnections() throws InterruptedException {
         synchronized (connections) {
             while (connections.size() < NUMBER_OF_CONNECTIONS) {
                 connections.wait();
