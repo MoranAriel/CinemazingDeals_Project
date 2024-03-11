@@ -17,7 +17,7 @@ public class CustomerFacade extends ClientFacade {
     @Override
     public boolean login(String email, String password) throws CouponSystemException {
         if (!customersDAO.isCustomerExistsByEmailAndPassword(email, password)) {
-            throw new CouponSystemException("Customer login failed, please try again.");
+            throw new CouponSystemException("\u001b[31mCustomer login failed, please try again.\u001b[0m");
         }
         return true;
     }
@@ -25,24 +25,24 @@ public class CustomerFacade extends ClientFacade {
 
     public void PurchaseCoupon(int customerID, int couponID) throws CouponSystemException {
         if (!customersDAO.isCustomerExistsById(customerID)) {
-            throw new CouponSystemException("Customer does not exist");
+            throw new CouponSystemException("\u001b[31mCustomer does not exist\u001b[0m");
         }
         if (!couponsDAO.isCouponExists(couponID)) {
-            throw new CouponSystemException("Coupon does not exist");
+            throw new CouponSystemException("\u001b[31mCoupon does not exist\u001b[0m");
         }
 
         if (couponsDAO.isCouponExistsByCustomerID(customerID, couponID)) {
-            throw new CouponSystemException("This coupon has already been purchased by this customer");
+            throw new CouponSystemException("\u001b[31mThis coupon has already been purchased by this customer\u001b[0m");
         }
 
         Coupon couponFromDB = couponsDAO.getOneCoupon(couponID);
 
         if (couponFromDB.getAmount() == 0) {
-            throw new CouponSystemException("Coupon is out of stock");
+            throw new CouponSystemException("\u001b[31mCoupon is out of stock\u001b[0m");
         }
 
         if (LocalDate.now().isAfter(couponFromDB.getEndDate())) {
-            throw new CouponSystemException("Coupon has expired");
+            throw new CouponSystemException("\u001b[31mCoupon has expired\u001b[0m");
         }
             couponFromDB.setAmount(couponFromDB.getAmount() - 1);
             couponsDAO.updateCoupon(couponFromDB);
@@ -53,7 +53,7 @@ public class CustomerFacade extends ClientFacade {
 
         public List<Coupon> getCustomerCoupons ( int customerID) throws CouponSystemException {
             if (!customersDAO.isCustomerExistsById(customerID)) {
-                throw new CouponSystemException("Customer does not exist");
+                throw new CouponSystemException("\u001b[31mCustomer does not exist\u001b[0m");
             }
             return couponsDAO.getCustomerCoupons(customerID);
         }
@@ -61,7 +61,7 @@ public class CustomerFacade extends ClientFacade {
 
         public List<Coupon> getCustomerCoupons ( int customerID, Category category) throws CouponSystemException {
             if (!customersDAO.isCustomerExistsById(customerID)) {
-                throw new CouponSystemException("Customer does not exist");
+                throw new CouponSystemException("\u001b[31mCustomer does not exist\u001b[0m");
             }
             return couponsDAO.getCustomerCouponsByCategory(customerID, category.getId());
         }
@@ -69,7 +69,7 @@ public class CustomerFacade extends ClientFacade {
 
         public List<Coupon> getCustomerCoupons ( int customerID, double maxPrice) throws CouponSystemException {
             if (!customersDAO.isCustomerExistsById(customerID)) {
-                throw new CouponSystemException("Customer does not exist");
+                throw new CouponSystemException("\u001b[31mCustomer does not exist\u001b[0m");
             }
             return couponsDAO.getCustomerCouponsByMaxPrice(customerID, maxPrice);
         }
@@ -77,7 +77,7 @@ public class CustomerFacade extends ClientFacade {
 
         public Customer getCustomerDetails ( int customerID) throws CouponSystemException {
             if (!customersDAO.isCustomerExistsById(customerID)) {
-                throw new CouponSystemException("Customer does not exist");
+                throw new CouponSystemException("\u001b[31mCustomer does not exist\u001b[0m");
             }
             Customer customer = customersDAO.getOneCustomer(customerID);
             customer.setCoupons(couponsDAO.getCustomerCoupons(customerID));

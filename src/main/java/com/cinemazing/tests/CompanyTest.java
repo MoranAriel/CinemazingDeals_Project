@@ -53,7 +53,7 @@ public class CompanyTest {
     }
 
     try {
-      System.out.println("Company login test (fail outor with email or password):");
+      System.out.println("Company login test (fail problem with email or password):");
       companyFacade = (CompanyFacade) loginManager.login(companyForLogin2.getEmail(), companyForLogin2.getPassword(), ClientType.COMPANY);
       System.out.println("Login Successful. Welcome Company "+companyForLogin2.getId()+"!"); //If login is successful, you will see this message.
     } catch (CouponSystemException e) {
@@ -145,7 +145,7 @@ public class CompanyTest {
     }
 
     try {
-      couponToUpdate.setTitle("can't think of a name");
+      couponToUpdate.setTitle("Free AfterEffects session");
       System.out.println("Update Coupon test (fail, coupon title already exists)");
       companyFacade.updateCoupon(1,couponToUpdate);
       System.out.println("Coupon Updated Successfully: "+ couponToUpdate);//If coupon updated successfully, you'll see this message.
