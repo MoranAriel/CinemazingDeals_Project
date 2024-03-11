@@ -21,7 +21,8 @@ public class CouponExcperationJob extends Thread {
       couponsDAO.deleteExpiredCoupons();
       
       try {
-        TimeUnit.HOURS.sleep(24);
+     TimeUnit.HOURS.sleep(24);
+//   TimeUnit.MILLISECONDS.sleep(1);
       } catch (InterruptedException e) {
         e.printStackTrace();
       }

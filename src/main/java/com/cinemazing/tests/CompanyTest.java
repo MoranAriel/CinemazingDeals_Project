@@ -65,11 +65,11 @@ public class CompanyTest {
   public static void addCouponTest() {
     Coupon couponToAdd = new Coupon(0, Category.DVD_AND_BLUERAY, "1+1","get 1+1 ha ha",
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
-    Coupon couponToAdd2 = new Coupon(0, Category.STREAMING, "Free Month","get first month free",
+    Coupon couponToAdd2 = new Coupon(0, Category.STREAMING, "Free Month - NETFLIX","Get first month free",
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
-    Coupon couponToAdd3 = new Coupon(0, Category.POST_PRODUCTION, "cant think of a name","cant think of a description",
+    Coupon couponToAdd3 = new Coupon(0, Category.POST_PRODUCTION, "Free AfterEffects session","Third session for FREE!",
             LocalDate.now(),LocalDate.of(2024,12,12),10,30.0,"imagelink");
-    Coupon couponToAdd4 = new Coupon(0, Category.PRODUCTION, "still cant think of a name","still cant think of a description",
+    Coupon couponToAdd4 = new Coupon(0, Category.PRODUCTION, "50% off DEALicious-Catering","on-location catering for your film production",
             LocalDate.now(),LocalDate.of(2024,12,12),10,40.0,"imagelink");
 
     try {
