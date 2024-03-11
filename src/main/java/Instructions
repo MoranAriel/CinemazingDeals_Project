@@ -24,7 +24,7 @@ To test the features of the website, enter the "Main" class and press the green 
 This will trigger all the tests.
 Every test has a title, and if the test is successful, you'll receive a message signaling the success.
 Some tests are designed to fail, in order to test fail states.
-If the test fails, you'll receive a message indicating failure.
+If the test fails, you'll receive a message indicating failure.(These fail messages are in red, we hardcoded the color, we know it's not pretty, but we didn't have the time:))
 
 One part of the program is a thread designed to delete expired coupons.
 Currently, it is designed to trigger once every 24 hours.
