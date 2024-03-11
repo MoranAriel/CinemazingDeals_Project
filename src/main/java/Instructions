@@ -1,0 +1,37 @@
+Welcome to Cinemazing Deals!
+
+This is a coupon website using MySQL as a database. We use DAO classes to send queries to MySQL,
+and we use Facade classes to access the DAO classes.
+This will be a website that'll feature coupons and deals relating to cinema.
+The companies we will work with deliver cinema related services, such as movie theaters, equipment stores,
+rental stores, production services and streaming platforms.
+Cinemazing Deals invites movie lovers to enjoy a plethora of deals exclusive to our website.
+
+In order for the program to work, you'll need the following:
+ 1. Java JDK - 17.
+ 2. MySQL library from Maven: mysql:mysql-connector-java:8.0.29
+
+The configurations of MySQL are as follows:
+ URL = "jdbc:mysql://localhost:3306/";
+ SQL_USER = "root";
+ SQL_PASS = "12345678";
+
+If your configured password is different, go to the "database" folder,
+and in the "DBManager" class, on line 24, enter the desired password.
+If your password is different than the one written on line 24, THE PROGRAM WILL CRASH!
+
+To test the features of the website, enter the "Main" class and press the green play button.
+This will trigger all the tests.
+Every test has a title, and if the test is successful, you'll receive a message signaling the success.
+Some tests are designed to fail, in order to test fail states.
+If the test fails, you'll receive a message indicating failure.
+
+One part of the program is a thread designed to delete expired coupons.
+Currently, it is designed to trigger once every 24 hours.
+In order to test it, go to the "job" folder, and in the "CouponExpirationJob" class, comment line 24, and uncomment line 25.
+In one of the tests, we changed the expiration date of coupon ID-2 to before the current date.
+After commenting line 24, and uncommenting line 25, you'll see that coupon ID-2 has been deleted.
+
+That's it for the instructions.
+Thank you, and enjoy Cinemazing Deals!
+
