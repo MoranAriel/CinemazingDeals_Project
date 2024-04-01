@@ -35,7 +35,7 @@ public class DBManager {
       preparedStatement.execute();
     } catch (InterruptedException | SQLException e) {
       System.out.println(e.getMessage());
-      ;
+
     } finally {
       ConnectionPool.getInstance().restoreConnection(connection);
     }
